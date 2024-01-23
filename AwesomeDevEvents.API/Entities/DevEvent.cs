@@ -14,5 +14,12 @@
         public DateTime EndDate { get; set; }
         public List<DevEventSpeaker> Speakers { get; set; }
         public bool IsDeleted { get; set; }
+        public void Update(string title, string description, DateTime startDate, DateTime endDate)
+        {
+            Title = title;
+            Description = description;
+            StartDate = startDate;
+            EndDate = endDate;
+        }
     }
 }
