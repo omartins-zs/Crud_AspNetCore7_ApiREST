@@ -45,6 +45,21 @@ namespace AwesomeDevEvents.API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = devEvent.Id }, devEvent);
 
         }
+        // api/dev-events/12 PUT
+        [HttpPut("{id}")]
+        public IActionResult Update(Guid id, DevEvent input)
+        {
+            var devEvent = _context.DevEvents.SingleOrDefault(d => d.Id == id);
+
+            if (devEvent == null)
+            {
+                return NotFound();
+            }
+
+            devEvent.Update(input.Title, input.Description, input.StartDate, input.EndDate);
+
+            return NoContent();
+        }
 
     }
 }
