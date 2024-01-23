@@ -61,5 +61,21 @@ namespace AwesomeDevEvents.API.Controllers
             return NoContent();
         }
 
+        // api/dev-events/12 DELETE
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            var devEvent = _context.DevEvents.SingleOrDefault(d => d.Id == id);
+
+            if (devEvent == null)
+            {
+                return NotFound();
+            }
+
+            devEvent.Delete();
+
+            return NoContent();
+        }
+
     }
 }
