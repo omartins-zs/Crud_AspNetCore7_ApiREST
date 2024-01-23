@@ -36,6 +36,15 @@ namespace AwesomeDevEvents.API.Controllers
             }
             return Ok(devEvent);
         }
+        // api/dev-events/ POST
+        [HttpPost]
+        public IActionResult Post(DevEvent devEvent)
+        {
+            _context.DevEvents.Add(devEvent);
+
+            return CreatedAtAction(nameof(GetById), new { id = devEvent.Id }, devEvent);
+
+        }
 
     }
 }
