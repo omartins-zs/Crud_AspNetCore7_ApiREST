@@ -15,6 +15,14 @@ namespace AwesomeDevEvents.API.Controllers
         {
             _context = context;
         }
+        // api/dev-events GET
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var devEvents = _context.DevEvents.Where(d => !d.IsDeleted).ToList();
+
+            return Ok(devEvents);
+        }
 
     }
 }
