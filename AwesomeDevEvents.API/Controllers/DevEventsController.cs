@@ -10,6 +10,11 @@ namespace AwesomeDevEvents.API.Controllers
     [ApiController]
     public class DevEventsController : ControllerBase
     {
+        private readonly DevEventsDbContext _context;
+        public DevEventsController(DevEventsDbContext context)
+        {
+            _context = context;
+        }
 
     }
 }
