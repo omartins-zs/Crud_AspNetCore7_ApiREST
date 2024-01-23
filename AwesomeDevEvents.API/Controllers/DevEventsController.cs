@@ -24,5 +24,18 @@ namespace AwesomeDevEvents.API.Controllers
             return Ok(devEvents);
         }
 
+        // api/dev-events/12 GET BY ID
+        [HttpGet("{id}")]
+        public IActionResult GetById(Guid id)
+        {
+            var devEvent = _context.DevEvents.SingleOrDefault(d => d.Id == id);
+
+            if (devEvent == null)
+            {
+                return NotFound();
+            }
+            return Ok(devEvent);
+        }
+
     }
 }
