@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AwesomeDevEvents.API.Controllers
 {
-    [Route("api/[controller]")]
+    // [Route("api/[controller]")]
+    [Route("api/dev-events")]
     [ApiController]
     public class DevEventsController : ControllerBase
     {
