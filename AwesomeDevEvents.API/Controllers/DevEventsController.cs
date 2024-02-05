@@ -44,7 +44,7 @@ namespace AwesomeDevEvents.API.Controllers
         public IActionResult Post(DevEvent devEvent)
         {
             _context.DevEvents.Add(devEvent);
-
+            _context.SaveChanges();
             return CreatedAtAction(nameof(GetById), new { id = devEvent.Id }, devEvent);
 
         }
@@ -60,7 +60,8 @@ namespace AwesomeDevEvents.API.Controllers
             }
 
             devEvent.Update(input.Title, input.Description, input.StartDate, input.EndDate);
-
+            _context.DevEvents.Update(devEvent);
+            _context.SaveChanges();
             return NoContent();
         }
 
@@ -76,6 +77,8 @@ namespace AwesomeDevEvents.API.Controllers
             }
 
             devEvent.Delete();
+
+            _context.SaveChanges();
 
             return NoContent();
         }
