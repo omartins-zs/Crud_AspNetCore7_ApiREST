@@ -128,7 +128,21 @@ namespace AwesomeDevEvents.API.Controllers
 
             return NoContent();
         }
+
+        /// <summary>
+        /// Cadastrar palestrante
+        /// </summary>
+        /// <remarks>
+        /// {"name":"string","talkTitle":"string","talkDescription":"string","linkedInProfile":"string"}
+        /// </remarks>
+        /// <param name="id">Identificador do evento</param>
+        /// <param name="input">Dados do palestrante</param>
+        /// <returns>Nada</returns>
+        /// <response code="204">Sucesso</response>
+        /// <response code="404">Evento não encontrado</response>
         [HttpPost("{id}/speakers")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public IActionResult PostSpeaker(Guid id, DevEventSpeaker speaker)
         {
             speaker.DevEventId = id;
