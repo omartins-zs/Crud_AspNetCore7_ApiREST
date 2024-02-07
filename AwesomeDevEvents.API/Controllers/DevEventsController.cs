@@ -43,18 +43,29 @@ namespace AwesomeDevEvents.API.Controllers
         public IActionResult GetById(Guid id)
         {
             {
-            var devEvent = _context.DevEvents
-                .Include(de => de.Speakers)
-                .SingleOrDefault(d => d.Id == id);
+                var devEvent = _context.DevEvents
+                    .Include(de => de.Speakers)
+                    .SingleOrDefault(d => d.Id == id);
 
-            if (devEvent == null)
-            {
-                return NotFound();
+                if (devEvent == null)
+                {
+                    return NotFound();
+                }
+                return Ok(devEvent);
             }
-            return Ok(devEvent);
         }
-        // api/dev-events/ POST
+
+        /// <summary>
+        /// Cadastrar um evento
+        /// </summary>
+        /// <remarks>
+        /// {"title":"string","description":"string","startDate":"2023-02-27T17:59:14.141Z","endDate":"2023-02-27T17:59:14.141Z"}
+        /// </remarks>
+        /// <param name="input">Dados do evento</param>
+        /// <returns>Objeto recém-criado</returns>
+        /// <response code="201">Sucesso</response>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         public IActionResult Post(DevEvent devEvent)
         {
             _context.DevEvents.Add(devEvent);
@@ -62,6 +73,7 @@ namespace AwesomeDevEvents.API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = devEvent.Id }, devEvent);
 
         }
+
         // api/dev-events/12 PUT
         [HttpPut("{id}")]
         public IActionResult Update(Guid id, DevEvent input)
