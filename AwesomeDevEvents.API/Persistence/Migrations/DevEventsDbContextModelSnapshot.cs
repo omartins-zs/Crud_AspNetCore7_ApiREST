@@ -31,10 +31,11 @@ namespace AwesomeDevEvents.API.Persistence.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("varchaar(200)");
+                        .HasColumnType("varchar(200)");
 
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("End_Date");
+                        .HasColumnType("datetime2")
+                        .HasColumnName("End_Date");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
