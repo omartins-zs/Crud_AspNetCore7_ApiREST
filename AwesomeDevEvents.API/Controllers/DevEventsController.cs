@@ -16,8 +16,13 @@ namespace AwesomeDevEvents.API.Controllers
         {
             _context = context;
         }
-        // api/dev-events GET
+        /// <summary>
+        /// Obter todos os eventos
+        /// </summary>
+        /// <returns>Coleção de eventos</returns>
+        /// <response code="200">Sucesso</response>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult GetAll()
         {
             var devEvents = _context.DevEvents.Where(d => !d.IsDeleted).ToList();
