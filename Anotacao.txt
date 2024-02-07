@@ -1,0 +1,85 @@
+1° Cria novo projeto "ASP.NET Core Web API"
+2° Nomear: AwesomeDevEvents.API | Solution: AwesomeDevEvents
+3° Habilitar: Configure HTTPS, Use Controllers, Enable OpenAPI
+4° Em Controller -> Add WEB -> API Controller - Empty
+5° Nomear: DevEventsController
+6° Criar Pasta Models
+7° Criar Pasta Entities e Add Class 'DevEvent.cs'
+8° Utilizar Atalho prop e Criar -> Guid Id, string Title, string Description, DateTime StartDate, DateTime EndDate, List<DevEventSpeaker> Speakers, bool IsDeleted
+9° Utilizar atalho ctor e Criar DevEvent -> Speakers = new List<DevEventSpeaker>() IsDeleted = false
+10° Criar void Update(string title, string description, DateTime startDate, DateTime endDate)
+11° Title = title; Description = description;StartDate = startDate ;EndDate = endDate;
+12° Criar void Delete() IsDeleted = true
+13° Criar na Pasta Entities e 'DevEventSpeaker.cs'
+14° Utilizar Atalho prop e Criar -> Guid Id, string Name, string TalkTitle, string TalkDescription, string LinkedInProfile, DateTime StartDate, DateTime EndDate, List<DevEventSpeaker> Speakers, bool IsDeleted
+15° Criar Pasta Persistence no AwesomeDevEvents e Criar Class DevEventsDbContext.cs
+16° List<DevEvent> DevEvents 
+17° Adicionar no Program o Serviço builder.Services.AddSingleton<DevEventsDbContext>();
+18° No Controller DevEventsController nomear: [Route("api/[dev-events]")] não funcionou
+19° Criando Rotas e Metodos da Api no Controller
+20° Instalar o Pacote do Nuget Microsoft.EntityFrameworkCore.Design
+21° Microsoft.EntityFrameworkCore.InMemory
+22° Usar comando "dotnet ef migrations add FirstMigration -o Persistence/Migrations" para gerar as Migratons
+23° Executando comando "dotnet ef database update" para atualizar e rodar SQL no Banco de dados
+24° Instalar Pacote do Nuget "AutoMapper.Extensions.Microsoft.DependencyInjection"
+25° Adicionar Breakpoint no var viewModel do GetAll
+
+# AwesomeDevEvents - Curso Criando REST APIs com ASP.NET Core
+
+Está sendo desenvolvido um projeto de eventos de programação, utilizando ASP.NET Core 7.
+
+## Tecnologias e ferramentas utilizadas
+- Visual Studio 2022
+- ASP.NET Core 7
+- EF Core
+- Swagger
+- AutoMapper
+
+
+## Funcionalidades
+- Cadastro, Listagem, Detalhes, Atualização, e Remoção de Evento
+- Cadastro de palestrantes
+
+
+
+Events
+[
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa8",
+    "title": "Teste",
+    "description": "Teste_Delete",
+    "startDate": "2024-01-23T14:53:11.368Z",
+    "endDate": "2024-01-23T14:53:11.368Z",
+    "speakers": [],
+    "isDeleted": false
+  },
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa9",
+    "title": "Dev Summit - 2024",
+    "description": "Encontro de Desenvolvedores - 2024",
+    "startDate": "2024-01-23T15:00:05.066Z",
+    "endDate": "2024-01-23T15:00:05.066Z",
+    "speakers": [],
+    "isDeleted": false
+  },
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa2",
+    "title": "Futebol dos Cria",
+    "description": "Futebol society com as lendas",
+    "startDate": "2024-01-23T15:00:05.066Z",
+    "endDate": "2024-01-23T17:20:05.066Z",
+    "speakers": [],
+    "isDeleted": false
+  }
+]
+
+Speakers
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "name": "Gabriel Martins",
+  "talkTitle": "Como Evoluir no Tênis de Mesa",
+  "talkDescription": "Dicas e Tecnicas para melhorar no Tênis de Mesa ou Ping Pong",
+  "linkedInProfile": "meuperfil@linkedin",
+  "startDate": "2024-01-23T15:15:43.930Z",
+  "endDate": "2024-01-23T15:15:43.930Z"
+}
