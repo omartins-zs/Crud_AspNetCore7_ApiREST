@@ -30,10 +30,19 @@ namespace AwesomeDevEvents.API.Controllers
             return Ok(devEvents);
         }
 
-        // api/dev-events/12 GET BY ID
+        /// <summary>
+        /// Obter um evento
+        /// </summary>
+        /// <param name="id">Identificador do evento</param>
+        /// <returns>Dados do evento</returns>
+        /// <response code="200">Sucesso</response>
+        /// <response code="404">Não encontrado</response>
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult GetById(Guid id)
         {
+            {
             var devEvent = _context.DevEvents
                 .Include(de => de.Speakers)
                 .SingleOrDefault(d => d.Id == id);
