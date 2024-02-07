@@ -85,6 +85,8 @@ namespace AwesomeDevEvents.API.Controllers
         [HttpPost("{id}/speakers")]
         public IActionResult PostSpeaker(Guid id, DevEventSpeaker speaker)
         {
+            speaker.DevEventId = id;
+
             var devEvent = _context.DevEvents.Any(d => d.Id == id);
 
             if (!devEvent)
