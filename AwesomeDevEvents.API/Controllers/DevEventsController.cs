@@ -74,8 +74,20 @@ namespace AwesomeDevEvents.API.Controllers
 
         }
 
-        // api/dev-events/12 PUT
+        /// <summary>
+        /// Atualizar um evento
+        /// </summary>
+        /// <remarks>
+        /// {"title":"string","description":"string","startDate":"2023-02-27T17:59:14.141Z","endDate":"2023-02-27T17:59:14.141Z"}
+        /// </remarks>
+        /// <param name="id">Identificador do evento</param>
+        /// <param name="input">Dados do evento</param>
+        /// <returns>Nada.</returns>
+        /// <response code="404">Não encontrado.</response>
+        /// <response code="204">Sucesso</response>
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public IActionResult Update(Guid id, DevEvent input)
         {
             var devEvent = _context.DevEvents.SingleOrDefault(d => d.Id == id);
