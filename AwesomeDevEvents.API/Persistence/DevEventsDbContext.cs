@@ -22,13 +22,13 @@ namespace AwesomeDevEvents.API.Persistence
                 e.Property(de => de.Title).IsRequired(false);
                 e.Property(de => de.Description)
                 .HasMaxLength(200)
-                .HasColumnType("varchaar(200)");
+                .HasColumnType("varchar(200)");
 
                 e.Property(de => de.StartDate)
                 .HasColumnName("Start_Date");
 
                 e.Property(de => de.EndDate)
-              .HasColumnType("End_Date");
+              .HasColumnName("End_Date");
 
                 e.HasMany(de => de.Speakers)
                 .WithOne()
