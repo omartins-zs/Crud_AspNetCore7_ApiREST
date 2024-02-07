@@ -103,8 +103,16 @@ namespace AwesomeDevEvents.API.Controllers
             return NoContent();
         }
 
-        // api/dev-events/12 DELETE
+        /// <summary>
+        /// Deletar um evento
+        /// </summary>
+        /// <param name="id">Identificador de evento</param>
+        /// <returns>Nada</returns>
+        /// <response code="404">Não encontrado</response>
+        /// <response code="204">Sucesso</response>
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public IActionResult Delete(Guid id)
         {
             var devEvent = _context.DevEvents.SingleOrDefault(d => d.Id == id);
