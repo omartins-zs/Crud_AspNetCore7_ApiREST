@@ -22,7 +22,7 @@ builder.Services.AddSwaggerGen(c =>
         {
             Name = "Test",
             Email = "teste@email.com",
-            Url = new Uri("youtube.com")
+            Url = new Uri("https://youtube.com")
         }
     });
 
